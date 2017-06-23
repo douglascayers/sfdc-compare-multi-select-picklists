@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <actionCalls>
+        <description>Given two multi-select picklist field values (semi-colon delimited) then returns comparison results of common and unique values between them.</description>
+        <name>Compare_Multi_Select_Picklist_Field_Values</name>
+        <label>Compare Multi-Select Picklist Field Values</label>
+        <locationX>298</locationX>
+        <locationY>67</locationY>
+        <actionName>MultiPicklistFieldCompareInvocable</actionName>
+        <actionType>apex</actionType>
+        <connector>
+            <targetReference>Screen2</targetReference>
+        </connector>
+        <inputParameters>
+            <name>picklistA</name>
+            <value>
+                <elementReference>First_Multi_Select_Picklist</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>picklistB</name>
+            <value>
+                <elementReference>Second_Multi_Select_Picklist</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>varCommonValues</assignToReference>
+            <name>commonValues</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>varUniqueValuesA</assignToReference>
+            <name>uniqueValuesA</name>
+        </outputParameters>
+        <outputParameters>
+            <assignToReference>varUniqueValuesB</assignToReference>
+            <name>uniqueValuesB</name>
+        </outputParameters>
+    </actionCalls>
+    <description>Demonstrates how to use invocable apex to compare two multi-select picklist fields and determine common and unique values.</description>
+    <dynamicChoiceSets>
+        <name>AccountContactRelationRolesChoice</name>
+        <dataType>Multipicklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Roles</picklistField>
+        <picklistObject>AccountContactRelation</picklistObject>
+        <sortOrder>Asc</sortOrder>
+    </dynamicChoiceSets>
+    <interviewLabel>Multi-Select Picklist Field Compare Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Multi-Select Picklist Field Compare Flow</label>
+    <processType>Flow</processType>
+    <screens>
+        <name>Screen1</name>
+        <label>Screen1</label>
+        <locationX>116</locationX>
+        <locationY>65</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Compare_Multi_Select_Picklist_Field_Values</targetReference>
+        </connector>
+        <fields>
+            <name>First_Multi_Select_Picklist</name>
+            <choiceReferences>AccountContactRelationRolesChoice</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>First Multi-Select Picklist</fieldText>
+            <fieldType>MultiSelectPicklist</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Second_Multi_Select_Picklist</name>
+            <choiceReferences>AccountContactRelationRolesChoice</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Second Multi-Select Picklist</fieldText>
+            <fieldType>MultiSelectPicklist</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Screen2</name>
+        <label>Screen2</label>
+        <locationX>475</locationX>
+        <locationY>67</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>CommonValues</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;B&gt;Common Values:&lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!varCommonValues}&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Spacer1</name>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>UniqueValuesA</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;B&gt;First Multi-Select Picklist&amp;apos;s Unique Values:&lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!varUniqueValuesA}&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Spacer2</name>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>UniqueValuesB</name>
+            <fieldText>&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;B&gt;Second Multi-Select Picklist&amp;apos;s Unique Values:&lt;/B&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!varUniqueValuesB}&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <startElementReference>Screen1</startElementReference>
+    <variables>
+        <description>The common values between the first and second multi-select picklist. If no common values then this variable will be null.</description>
+        <name>varCommonValues</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Unique values selected in first picklist that were not selected in second picklist. If no unique values then this variable will be null.</description>
+        <name>varUniqueValuesA</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Unique values selected in second picklist that were not selected in first picklist. If no unique values then this variable will be null.</description>
+        <name>varUniqueValuesB</name>
+        <dataType>String</dataType>
+        <isCollection>true</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+</Flow>
